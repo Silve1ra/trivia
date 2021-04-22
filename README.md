@@ -1,6 +1,6 @@
-<h4 align="center">
+<h2 align="center">
   🚀 Trivia
-</h4>
+</h2>
 
 <p align="center">
   
