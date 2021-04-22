@@ -39,9 +39,9 @@ By default, the frontend will run on localhost:3000.
 In order to run tests navigate to the backend folder and run the following commands: 
 
 ```
-flask db init
-flask db migrate
-flask db upgrade
+dropdb trivia_test
+createdb trivia_test
+psql trivia_test < trivia.psql
 python test_flaskr.py
 ```
 
