@@ -228,7 +228,7 @@ def create_app(test_config=None):
   @app.route('/categories')
   def index_categories():
       categories = Category.query.order_by(Category.id).all()
-      categories = [category.format() for category in categories]
+      categories = {category.id: category.type for category in categories}
       
       if len(categories) == 0:
           abort(404)
@@ -238,7 +238,7 @@ def create_app(test_config=None):
           'categories': categories,
           'total_categories': len(Category.query.all())
       })
-  
+
   '''
   @TODO: 
   Create error handlers for all expected errors 

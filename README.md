@@ -77,32 +77,14 @@ The API will return three error types when requests fail:
 - Sample: `curl http://127.0.0.1:5000/categories`
 ```
 {
-  "categories": [
-    {
-      "id": 1,
-      "type": "Science"
-    },
-    {
-      "id": 2,
-      "type": "Art"
-    },
-    {
-      "id": 3,
-      "type": "Geography"
-    },
-    {
-      "id": 4,
-      "type": "History"
-    },
-    {
-      "id": 5,
-      "type": "Entertainment"
-    },
-    {
-      "id": 6,
-      "type": "Sports"
-    }
-  ],
+  "categories": {
+    "1": "Science",
+    "2": "Art",
+    "3": "Geography",
+    "4": "History",
+    "5": "Entertainment",
+    "6": "Sports"
+  },
   "success": true,
   "total_categories": 6
 }
@@ -435,7 +417,7 @@ The API will return three error types when requests fail:
 
 #### POST /quizzes
 - General:
-    - Returns questions to play the quiz. Returns a random question, a total of available questions and a success message.
+    - Returns a question to play the quiz. Returns a random question, a total of available questions based on previous ones and a success status message.
 - `curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{ "quiz_category": 3, "previous_questions": [ "What is the largest lake in Africa?", "In which royal palace would you find the Hall of Mirrors?" ] }`
 ```
 {
