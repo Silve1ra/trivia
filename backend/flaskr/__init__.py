@@ -205,7 +205,7 @@ def create_app(test_config=None):
         questions = Question.query.filter(Question.question.notin_((previous_questions))).all()
         available_questions = paginate_questions(request, questions)
       else:
-        questions = Question.query.filter_by(category=category).filter(Question.question.notin_((previous_questions))).all()
+        questions = Question.query.filter_by(category=category).filter(Question.id.notin_((previous_questions))).all()
         available_questions = paginate_questions(request, questions)
 
       if len(available_questions) > 0:
@@ -218,7 +218,7 @@ def create_app(test_config=None):
         'question': new_question,
         'total_available_questions': len(available_questions)
       })
-      
+
     except:
       abort(422)
 
