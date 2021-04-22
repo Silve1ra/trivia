@@ -203,7 +203,7 @@ The API will return three error types when requests fail:
 #### POST /questions
 - General:
     - Creates a new question using the submitted question, answer, category and difficulty. Returns the id of the created question, success value, total questions, and question list based on current page number to update the frontend. 
-- `curl http://127.0.0.1:5000/books?page=3 -X POST -H "Content-Type: application/json" -d '{ "question": "test question", "answer": "test answer", "category": 1, "difficulty": 5 }'`
+- `curl http://127.0.0.1:5000/questions -X POST -H "Content-Type: application/json" -d '{ "question": "test question", "answer": "test answer", "category": 1, "difficulty": 5 }'`
 ```
 {
   "created": {
@@ -376,6 +376,60 @@ The API will return three error types when requests fail:
   ],
   "success": true,
   "total_questions": 19
+}
+```
+
+#### POST /questions/search
+- General:
+    - Search the question of the given title if it exists. Returns the id of the fetched question, success value, total questions, and question list based on current page number to update the frontend. 
+- `curl http://127.0.0.1:5000/questions -X GET -H "Content-Type: application/json" -d '{ "search": "Taj Mahal" }`
+```
+{
+  "questions": [
+    {
+      "answer": "Agra",
+      "category": 3,
+      "difficulty": 2,
+      "id": 11,
+      "question": "The Taj Mahal is located in which Indian city?"
+    }
+  ],
+  "success": true,
+  "total_questions": 1
+}
+```
+
+#### POST /categories/{id_category}/questions
+- General:
+    - Search the questions of the given category if it exists. Returns the id of the fetched questions, success value, total questions, and question list based on current page number to update the frontend. 
+- `curl http://127.0.0.1:5000/categories/3/questions`
+```
+{
+  "questions": [
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 9,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "The Palace of Versailles",
+      "category": 3,
+      "difficulty": 3,
+      "id": 10,
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    },
+    {
+      "answer": "Agra",
+      "category": 3,
+      "difficulty": 2,
+      "id": 11,
+      "question": "The Taj Mahal is located in which Indian city?"
+    }
+  ],
+  "success": true,
+  "total_questions": 3
 }
 ```
 
