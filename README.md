@@ -70,14 +70,50 @@ The API will return three error types when requests fail:
 - 500: Internal Server Error
 
 ### Endpoints 
+#### GET /categories
+- General:
+    - Returns a list of categories objects, success value, and total number of questions
+    - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1. 
+- Sample: `curl http://127.0.0.1:5000/categories`
+```
+{
+  "categories": [
+    {
+      "id": 1,
+      "type": "Science"
+    },
+    {
+      "id": 2,
+      "type": "Art"
+    },
+    {
+      "id": 3,
+      "type": "Geography"
+    },
+    {
+      "id": 4,
+      "type": "History"
+    },
+    {
+      "id": 5,
+      "type": "Entertainment"
+    },
+    {
+      "id": 6,
+      "type": "Sports"
+    }
+  ],
+  "success": true,
+  "total_categories": 6
+}
+```
+
 #### GET /questions
 - General:
     - Returns a list of questions objects, success value, and total number of questions
     - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1. 
 - Sample: `curl http://127.0.0.1:5000/questions?page=1`
-
-``` {
-  {
+```{
   "categories": {
     "1": "Science",
     "2": "Art",
@@ -92,173 +128,71 @@ The API will return three error types when requests fail:
       "answer": "Maya Angelou",
       "category": 4,
       "difficulty": 2,
-      "id": 26,
+      "id": 1,
       "question": "Whose autobiography is entitled I Know Why the Caged Bird Sings?"
     },
     {
       "answer": "Muhammad Ali",
       "category": 4,
       "difficulty": 1,
-      "id": 27,
+      "id": 2,
       "question": "What boxers original name is Cassius Clay?"
     },
     {
       "answer": "Apollo 13",
       "category": 5,
       "difficulty": 4,
-      "id": 28,
+      "id": 3,
       "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
     },
     {
       "answer": "Tom Cruise",
       "category": 5,
       "difficulty": 4,
-      "id": 29,
+      "id": 4,
       "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
     },
     {
       "answer": "Edward Scissorhands",
       "category": 5,
       "difficulty": 3,
-      "id": 30,
+      "id": 5,
       "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
     },
     {
       "answer": "Brazil",
       "category": 6,
       "difficulty": 3,
-      "id": 31,
+      "id": 6,
       "question": "Which is the only team to play in every soccer World Cup tournament?"
     },
     {
       "answer": "Uruguay",
       "category": 6,
       "difficulty": 4,
-      "id": 32,
+      "id": 7,
       "question": "Which country won the first ever soccer World Cup in 1930?"
     },
     {
       "answer": "George Washington Carver",
       "category": 4,
       "difficulty": 2,
-      "id": 33,
+      "id": 8,
       "question": "Who invented Peanut Butter?"
     },
     {
       "answer": "Lake Victoria",
       "category": 3,
       "difficulty": 2,
-      "id": 34,
+      "id": 9,
       "question": "What is the largest lake in Africa?"
     },
     {
       "answer": "The Palace of Versailles",
       "category": 3,
       "difficulty": 3,
-      "id": 35,
+      "id": 10,
       "question": "In which royal palace would you find the Hall of Mirrors?"
-    }
-  ],
-  "success": true,
-  "total_questions": 20
-}
-```
-
-#### POST /questions
-- General:
-    - Creates a new question using the submitted question, answer, category and difficulty. Returns the id of the created question, success value, total questions, and question list based on current page number to update the frontend. 
-- `POST http://127.0.0.1:5000/questions' with the following json`
-```
-{
-	"question": "test question",
-	"answer": "test answer",
-	"category": 1,
-	"difficulty": 5
-}
-```
-#### DELETE /questions/{question_id}
-- General:
-    - Deletes the question of the given ID if it exists. Returns the id of the deleted question, success value, total questions, and question list based on current page number to update the frontend. 
-- `curl -X DELETE http://127.0.0.1:5000/questions/16`
-```
-{
-  "deleted": {
-    "answer": "test answer",
-    "category": 1,
-    "difficulty": 5,
-    "id": 131,
-    "question": "test question"
-  },
-  "questions": [
-    {
-      "answer": "Maya Angelou",
-      "category": 4,
-      "difficulty": 2,
-      "id": 26,
-      "question": "Whose autobiography is entitled I Know Why the Caged Bird Sings?"
-    },
-    {
-      "answer": "Muhammad Ali",
-      "category": 4,
-      "difficulty": 1,
-      "id": 27,
-      "question": "What boxers original name is Cassius Clay?"
-    },
-    {
-      "answer": "Apollo 13",
-      "category": 5,
-      "difficulty": 4,
-      "id": 28,
-      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
-    },
-    {
-      "answer": "Tom Cruise",
-      "category": 5,
-      "difficulty": 4,
-      "id": 29,
-      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
-    },
-    {
-      "answer": "Edward Scissorhands",
-      "category": 5,
-      "difficulty": 3,
-      "id": 30,
-      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
-    },
-    {
-      "answer": "Brazil",
-      "category": 6,
-      "difficulty": 3,
-      "id": 31,
-      "question": "Which is the only team to play in every soccer World Cup tournament?"
-    },
-    {
-      "answer": "George Washington Carver",
-      "category": 4,
-      "difficulty": 2,
-      "id": 33,
-      "question": "Who invented Peanut Butter?"
-    },
-    {
-      "answer": "Lake Victoria",
-      "category": 3,
-      "difficulty": 2,
-      "id": 34,
-      "question": "What is the largest lake in Africa?"
-    },
-    {
-      "answer": "The Palace of Versailles",
-      "category": 3,
-      "difficulty": 3,
-      "id": 35,
-      "question": "In which royal palace would you find the Hall of Mirrors?"
-    },
-    {
-      "answer": "Agra",
-      "category": 3,
-      "difficulty": 2,
-      "id": 36,
-      "question": "The Taj Mahal is located in which Indian city?"
     }
   ],
   "success": true,
@@ -266,7 +200,184 @@ The API will return three error types when requests fail:
 }
 ```
 
-## Deployment N/A
+#### POST /questions
+- General:
+    - Creates a new question using the submitted question, answer, category and difficulty. Returns the id of the created question, success value, total questions, and question list based on current page number to update the frontend. 
+- `curl http://127.0.0.1:5000/books?page=3 -X POST -H "Content-Type: application/json" -d '{ "question": "test question", "answer": "test answer", "category": 1, "difficulty": 5 }'`
+```
+{
+  "created": {
+    "answer": "test answer",
+    "category": 1,
+    "difficulty": 5,
+    "id": 20,
+    "question": "test question"
+  },
+  "questions": [
+    {
+      "answer": "Maya Angelou",
+      "category": 4,
+      "difficulty": 2,
+      "id": 1,
+      "question": "Whose autobiography is entitled I Know Why the Caged Bird Sings?"
+    },
+    {
+      "answer": "Muhammad Ali",
+      "category": 4,
+      "difficulty": 1,
+      "id": 2,
+      "question": "What boxers original name is Cassius Clay?"
+    },
+    {
+      "answer": "Apollo 13",
+      "category": 5,
+      "difficulty": 4,
+      "id": 3,
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+    },
+    {
+      "answer": "Tom Cruise",
+      "category": 5,
+      "difficulty": 4,
+      "id": 4,
+      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+    },
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 5,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    },
+    {
+      "answer": "Brazil",
+      "category": 6,
+      "difficulty": 3,
+      "id": 6,
+      "question": "Which is the only team to play in every soccer World Cup tournament?"
+    },
+    {
+      "answer": "Uruguay",
+      "category": 6,
+      "difficulty": 4,
+      "id": 7,
+      "question": "Which country won the first ever soccer World Cup in 1930?"
+    },
+    {
+      "answer": "George Washington Carver",
+      "category": 4,
+      "difficulty": 2,
+      "id": 8,
+      "question": "Who invented Peanut Butter?"
+    },
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 9,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "The Palace of Versailles",
+      "category": 3,
+      "difficulty": 3,
+      "id": 10,
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    }
+  ],
+  "success": true,
+  "total_questions": 20
+}
+```
+#### DELETE /questions/{question_id}
+- General:
+    - Deletes the question of the given ID if it exists. Returns the id of the deleted question, success value, total questions, and question list based on current page number to update the frontend. 
+- `curl -X DELETE http://127.0.0.1:5000/questions/20`
+```
+{
+  "deleted": {
+    "answer": "test answer",
+    "category": 1,
+    "difficulty": 5,
+    "id": 20,
+    "question": "test question"
+  },
+  "questions": [
+    {
+      "answer": "Maya Angelou",
+      "category": 4,
+      "difficulty": 2,
+      "id": 1,
+      "question": "Whose autobiography is entitled I Know Why the Caged Bird Sings?"
+    },
+    {
+      "answer": "Muhammad Ali",
+      "category": 4,
+      "difficulty": 1,
+      "id": 2,
+      "question": "What boxers original name is Cassius Clay?"
+    },
+    {
+      "answer": "Apollo 13",
+      "category": 5,
+      "difficulty": 4,
+      "id": 3,
+      "question": "What movie earned Tom Hanks his third straight Oscar nomination, in 1996?"
+    },
+    {
+      "answer": "Tom Cruise",
+      "category": 5,
+      "difficulty": 4,
+      "id": 4,
+      "question": "What actor did author Anne Rice first denounce, then praise in the role of her beloved Lestat?"
+    },
+    {
+      "answer": "Edward Scissorhands",
+      "category": 5,
+      "difficulty": 3,
+      "id": 5,
+      "question": "What was the title of the 1990 fantasy directed by Tim Burton about a young man with multi-bladed appendages?"
+    },
+    {
+      "answer": "Brazil",
+      "category": 6,
+      "difficulty": 3,
+      "id": 6,
+      "question": "Which is the only team to play in every soccer World Cup tournament?"
+    },
+    {
+      "answer": "Uruguay",
+      "category": 6,
+      "difficulty": 4,
+      "id": 7,
+      "question": "Which country won the first ever soccer World Cup in 1930?"
+    },
+    {
+      "answer": "George Washington Carver",
+      "category": 4,
+      "difficulty": 2,
+      "id": 8,
+      "question": "Who invented Peanut Butter?"
+    },
+    {
+      "answer": "Lake Victoria",
+      "category": 3,
+      "difficulty": 2,
+      "id": 9,
+      "question": "What is the largest lake in Africa?"
+    },
+    {
+      "answer": "The Palace of Versailles",
+      "category": 3,
+      "difficulty": 3,
+      "id": 10,
+      "question": "In which royal palace would you find the Hall of Mirrors?"
+    }
+  ],
+  "success": true,
+  "total_questions": 19
+}
+```
 
 ## Authors
 Yours truly, Felipe Silveira 
