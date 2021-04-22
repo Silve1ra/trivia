@@ -381,7 +381,7 @@ The API will return three error types when requests fail:
 
 #### POST /questions/search
 - General:
-    - Search the question of the given title if it exists. Returns the id of the fetched question, success value, total questions, and question list based on current page number to update the frontend. 
+    - Search the question of the given title if it exists.  Returns the success value, total questions, and question list.
 - `curl http://127.0.0.1:5000/questions -X GET -H "Content-Type: application/json" -d '{ "search": "Taj Mahal" }`
 ```
 {
@@ -401,7 +401,7 @@ The API will return three error types when requests fail:
 
 #### POST /categories/{id_category}/questions
 - General:
-    - Search the questions of the given category if it exists. Returns the id of the fetched questions, success value, total questions, and question list based on current page number to update the frontend. 
+    - Search the questions of the given category if it exists. Returns the success value, total questions, and question list.
 - `curl http://127.0.0.1:5000/categories/3/questions`
 ```
 {

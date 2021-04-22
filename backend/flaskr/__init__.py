@@ -3,6 +3,7 @@ from flask import Flask, request, abort, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 import random
+from sqlalchemy import func
 
 from models import setup_db, Question, Category
 
@@ -190,7 +191,35 @@ def create_app(test_config=None):
   one question at a time is displayed, the user is allowed to answer
   and shown whether they were correct or not. 
   '''
-  
+  @app.route('/quizzes', methods=['POST'])
+  def play_quiz():
+    try:
+      body = request.get_json()
+      if not ('quiz_category' in body and 'previous_questions' in body):
+        abort(422)
+
+      category = body.get('quiz_category')
+      previous_questions = body.get('previous_questions')
+
+      if category == 0:
+        questions = Question.query.filter(Question.question.notin_((previous_questions))).all()
+        available_questions = paginate_questions(request, questions)
+      else:
+        questions = Question.query.filter_by(category=category).filter(Question.question.notin_((previous_questions))).all()
+        available_questions = paginate_questions(request, questions)
+
+      if len(available_questions) > 0:
+        new_question = available_questions[random.randrange(0, len(available_questions))]
+      else:
+        new_question = None
+       
+      return jsonify({
+        'success': True,
+        'question': new_question
+      })
+      
+    except:
+      abort(422)
 
   '''
   Create an endpoint to handle GET requests for all available categories.
