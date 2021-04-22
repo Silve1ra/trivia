@@ -418,7 +418,7 @@ The API will return three error types when requests fail:
 #### POST /quizzes
 - General:
     - Returns a question to play the quiz. Returns a random question, a total of available questions based on previous ones and a success status message.
-- `curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{ "quiz_category": 3, "previous_questions": [ "What is the largest lake in Africa?", "In which royal palace would you find the Hall of Mirrors?" ] }`
+- `curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{ "quiz_category": 3, "previous_questions": [ 9, 10 ] }`
 ```
 {
   "question": {
