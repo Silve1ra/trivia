@@ -16,7 +16,11 @@
 </p>
 
 This project is a Trivia Game. 
-All backend code follows [PEP8 style guidelines](https://www.python.org/dev/peps/pep-0008/). 
+All backend code follows [PEP8 style guidelines](https://www.python.org/dev/peps/pep-0008/).
+
+<h1 align="center">
+  <img src="https://cdn.loom.com/sessions/thumbnails/6b6154bc9d9e464d848b3e393173c433-with-play.gif" width="600">
+</h1>
 
 ## Getting Started
 
