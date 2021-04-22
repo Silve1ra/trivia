@@ -1,6 +1,21 @@
-# Trivia
+<h4 align="center">
+  🚀 Trivia
+</h4>
 
-This project is a Trivia Application. 
+<p align="center">
+  
+  <a href="https://github.com/Silve1ra/trivia/commits/main">
+    <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Silve1ra/trivia">
+  </a>
+
+  <a href="https://github.com/Silve1ra/trivia/issues">
+    <img alt="Repository issues" src="https://img.shields.io/github/issues/Silve1ra/trivia">
+  </a>
+
+  <img alt="License" src="https://img.shields.io/badge/license-MIT-brightgreen">
+</p>
+
+This project is a Trivia Game. 
 All backend code follows [PEP8 style guidelines](https://www.python.org/dev/peps/pep-0008/). 
 
 ## Getting Started
@@ -434,7 +449,7 @@ The API will return three error types when requests fail:
 ```
 
 ## Authors
-Yours truly, Felipe Silveira 
+Yours truly, <a href="https://github.com/Silve1ra"><b>Felipe Silveira</b> 
 
 ## Acknowledgements 
 The awesome Udacity Nanodegree helping me to be an extraordinary full stack developer! 
