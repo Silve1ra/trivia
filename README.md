@@ -70,7 +70,7 @@ The API will return three error types when requests fail:
 - 500: Internal Server Error
 
 ### Endpoints 
-#### GET /books
+#### GET /questions
 - General:
     - Returns a list of questions objects, success value, and total number of questions
     - Results are paginated in groups of 10. Include a request argument to choose page number, starting from 1. 
