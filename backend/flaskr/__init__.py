@@ -215,7 +215,8 @@ def create_app(test_config=None):
        
       return jsonify({
         'success': True,
-        'question': new_question
+        'question': new_question,
+        'total_available_questions': len(available_questions)
       })
       
     except:

@@ -433,6 +433,24 @@ The API will return three error types when requests fail:
 }
 ```
 
+#### POST /quizzes
+- General:
+    - Returns questions to play the quiz. Returns a random question, a total of available questions and a success message.
+- `curl http://127.0.0.1:5000/quizzes -X POST -H "Content-Type: application/json" -d '{ "quiz_category": 3, "previous_questions": [ "What is the largest lake in Africa?", "In which royal palace would you find the Hall of Mirrors?" ] }`
+```
+{
+  "question": {
+    "answer": "Agra",
+    "category": 3,
+    "difficulty": 2,
+    "id": 11,
+    "question": "The Taj Mahal is located in which Indian city?"
+  },
+  "success": true,
+  "total_available_questions": 1
+}
+```
+
 ## Authors
 Yours truly, Felipe Silveira 
 
